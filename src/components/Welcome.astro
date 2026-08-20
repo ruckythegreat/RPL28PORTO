@@ -179,9 +179,9 @@ style="mask-image: linear-gradient(
 
     if (!line1 || !line2 || !desc) return;
 
-    line1.textContent = "HELOOO EVERYONE";
-    line2.textContent = "I'm Rucky";
-    desc.textContent = "A personal portfolio website, built for fun";
+    line1.textContent = "RPL 1 & 2";
+    line2.textContent = "Portofolio Website";
+    desc.textContent = "";
 
     gsap.set([line1, line2, desc], { visibility: "visible" });
 
@@ -192,7 +192,7 @@ style="mask-image: linear-gradient(
     });
 
     gsap.delayedCall(0.9, () => {
-      scrambleReveal(desc, "A personal portfolio website, built for fun");
+      scrambleReveal(desc, "Built for SMKN 2 Bandung Open House Events");
     });
   }
 
