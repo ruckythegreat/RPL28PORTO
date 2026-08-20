@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Loading from "../components/Loading.astro";
+import Side from "../components/Side.astro";
+import Welcome from "../components/Welcome.astro";
+import BiodataAstroComponent from "../components/Biodata.astro";
+import EducationHistory from "../components/EducationHistory.astro";
+import MediaComponent from "../components/media.astro"
+import ProjectAstroComponent from "../components/project.astro";
+import SocialMedia from "../components/social.astro"
+import Contact from "../components/Contact.astro"
+import Footer from "../components/footer.astro"
+import * as Icons from "@lucide/astro";
+---
+
+  <Side />
+
+<Layout>
+  <Loading /> 
+
+  <Welcome />
+  <BiodataAstroComponent />
+    <EducationHistory />
+  <MediaComponent />
+  <ProjectAstroComponent />
+  <SocialMedia />
+    <Contact />
+    <Footer />
+</Layout>
