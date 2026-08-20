@@ -6,11 +6,7 @@ import "../styles/global.css";
   id="ContactPage"
   class="relative flex w-full items-center justify-center bg-white max-lg:h-auto max-lg:min-h-screen max-lg:overflow-x-hidden lg:h-screen lg:overflow-hidden"
 >
-  <!-- 
-    FOOLPROOF MOBILE OVERRIDE:
-    Mematikan paksaan "scale" dan "translate" dari JS khusus saat di HP,
-    agar layout bisa menyesuaikan layar vertikal (scroll).
-  -->
+
   <style>
     @media (max-width: 1023px) {
       #contact-stage {
@@ -29,19 +25,15 @@ import "../styles/global.css";
     class="absolute left-1/2 top-1/2 z-10 origin-center lg:h-[1080px] lg:w-[1920px]"
   >
     
-    <!-- Wrapper Utama -->
     <div class="relative flex h-full w-full flex-col px-6 py-12 lg:block lg:h-[1080px] lg:w-[1920px] lg:px-32 lg:py-24">
       
-      <!-- Teks Versi -->
       <p class="absolute right-6 top-6 text-xs text-gray-400 lg:right-32 lg:top-12 lg:text-lg">
         V.1-Entry &#8968;0:10&#8969;
       </p>
 
       <div class="mx-auto flex h-full max-w-[1600px] flex-col gap-8 lg:flex-row lg:gap-12">
         
-        <!-- ================= SIDEBAR ================= -->
-        <!-- Di Desktop: Vertikal di kiri | Di Mobile: Menjadi Banner Horizontal memanjang di atas -->
-        <aside class="flex w-full items-center justify-between rounded-xl bg-[#ffc994] px-6 py-4 lg:w-[110px] lg:flex-col lg:rounded-none lg:px-0 lg:py-10">
+       <aside class="flex w-full items-center justify-between rounded-xl bg-[#ffc994] px-6 py-4 lg:w-[110px] lg:flex-col lg:rounded-none lg:px-0 lg:py-10">
           <div class="text-left lg:mb-auto lg:text-center">
             <h3 class="text-xl font-black lg:text-4xl">
               CONNECT
@@ -55,7 +47,6 @@ import "../styles/global.css";
           </div>
         </aside>
 
-        <!-- ================= KONTEN UTAMA ================= -->
         <main class="flex flex-1 flex-col justify-center">
           <div class="mb-6 lg:mb-8">
             <p class="mb-2 text-xs text-gray-500 lg:text-sm">
@@ -73,7 +64,6 @@ import "../styles/global.css";
             </p>
           </div>
 
-          <!-- GRID KARTU (1 Kolom di HP, 2 Kolom Tablet, 3 Kolom Desktop) -->
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             
             <a
@@ -90,8 +80,6 @@ import "../styles/global.css";
               </p>
             </a>
 
-            <!-- Bisa Anda tambahkan kartu lain di sini (misal: Email, Twitter, dll) -->
-            
           </div>
         </main>
 
@@ -100,7 +88,6 @@ import "../styles/global.css";
   </div>
 </section>
 
-<!-- SCRIPT JS TETAP SAMA PERSIS -->
 <script>
   function autoScaleStage() {
     const stage = document.getElementById("contact-stage");

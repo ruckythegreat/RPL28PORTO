@@ -6,11 +6,7 @@ import "../styles/global.css";
   id="SocialMediaPage"
   class="relative flex h-screen w-screen items-center justify-center overflow-x-hidden bg-white max-lg:h-auto max-lg:min-h-screen"
 >
-  <!-- 
-    FOOLPROOF MOBILE OVERRIDE:
-    Mematikan paksaan "scale" dari GSAP saat di HP,
-    membiarkan Tailwind bekerja secara natural.
-  -->
+
   <style>
     @media (max-width: 1023px) {
       #social-stage {
@@ -28,16 +24,8 @@ import "../styles/global.css";
     id="social-stage"
     class="absolute origin-center z-10 lg:h-[1080px] lg:w-[1920px]"
   >
-    <!-- 
-      Penyesuaian Padding: 
-      Mobile pakai px-6 (kiri-kanan) dan padding atas-bawah.
-      Desktop kembali pakai pl-20 seperti aslinya.
-    -->
     <div class="relative flex h-full flex-col justify-center px-6 py-12 lg:block lg:h-[1080px] lg:px-0 lg:py-2 lg:pl-20">
       
-      <!-- ========================================= -->
-      <!-- HEADER TITLE -->
-      <!-- ========================================= -->
       <h1 class="mb-4 text-center text-5xl font-black max-lg:mt-10 lg:mb-20 lg:text-[180px]">
         GET IN TOUCH
       </h1>
@@ -45,13 +33,9 @@ import "../styles/global.css";
         V.1-Entry &#8968;5:10&#8969;
       </p>
 
-      <!-- ========================================= -->
-      <!-- MAIN GRID (Kolom Bertumpuk di HP, Grid 3-Kolom di Desktop) -->
-      <!-- ========================================= -->
       <div
         class="mx-auto flex w-full max-w-[1400px] flex-col gap-8 lg:grid lg:grid-cols-[220px_1fr_180px] lg:gap-10"
       >
-        <!-- ================= SIDEBAR ================= -->
         <aside class="flex flex-col max-lg:items-center max-lg:text-center">
           <p class="mb-2 flex items-center text-[10px] uppercase lg:text-xs">
             SOCIAL MEDIA 
@@ -66,7 +50,6 @@ import "../styles/global.css";
             STEAM
           </h2>
 
-          <!-- Garis vertikal disembunyikan di HP karena layoutnya berubah -->
           <div class="mb-12 hidden h-20 w-1 bg-black lg:block"></div>
 
           <div
@@ -77,20 +60,17 @@ import "../styles/global.css";
           </div>
         </aside>
 
-        <!-- ================= KONTEN UTAMA ================= -->
         <main class="flex w-full flex-col max-lg:items-center">
           
           <div
             id="social-card-wrap"
             class="relative flex w-full items-center justify-center overflow-hidden bg-gray-100 max-lg:h-[450px] max-lg:rounded-2xl lg:h-[600px]"
           >
-            <!-- OVERLAY TRANSISI -->
             <div 
               id="card-slide-overlay" 
               class="pointer-events-none absolute inset-0 z-50 hidden h-full w-full"
             ></div>
 
-            <!-- CARD PUTIH -->
             <div
               class="relative z-10 w-full max-w-[500px] rounded-xl border-2 border-black bg-white p-6 shadow-2xl max-lg:mx-4 lg:p-10"
             >
@@ -125,8 +105,6 @@ import "../styles/global.css";
               </a>
             </div>
 
-            <!-- TOMBOL NAVIGASI -->
-            <!-- Dikecilkan di HP agar tidak menutupi Card terlalu banyak -->
             <button
               id="prev-btn"
               class="social-nav-btn absolute left-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border-2 border-black bg-white text-black transition-colors hover:bg-[#ffc994] lg:left-8 lg:h-14 lg:w-14"
@@ -142,7 +120,6 @@ import "../styles/global.css";
             </button>
           </div>
 
-          <!-- KETERANGAN BAWAH -->
           <div class="mt-8 max-lg:text-center">
             <p
               id="social-counter"
@@ -151,13 +128,11 @@ import "../styles/global.css";
               1 / 4
             </p>
             <p class="mt-2 text-xl font-medium lg:mt-4 lg:text-2xl">
-              Select a social media profile.
+              PORTOFOLIO RPL 1&2 SMKN 2 BDG
             </p>
           </div>
         </main>
 
-        <!-- ================= TEKS VERTIKAL ================= -->
-        <!-- Sembunyikan di HP karena memakan tempat dan sulit dibaca -->
         <div
           id="social-accent"
           class="hidden items-center justify-center border-l-4 border-black bg-[#ffc994] transition-colors duration-300 lg:flex"
@@ -175,10 +150,6 @@ import "../styles/global.css";
   </div>
 </section>
 
-<!-- 
-  SCRIPT JS/GSAP TETAP SAMA PERSIS 
-  Jangan diubah
--->
 <script>
   import { initSimpleStageScale } from "../Script/gsap-utils";
   import gsap from "gsap";
@@ -188,38 +159,38 @@ import "../styles/global.css";
 
     const socialList = [
       {
-        name: "STEAM",
-        username: "@rucky",
-        icon: "S",
-        description: "Game collection and community.",
-        url: "https://steamcommunity.com",
+        name: "RPL - 1",
+        username: "@xi_rpl_satoe",
+        icon: "R1",
+        description: "Akun Ig Resmi dari XI RPL 1 SMKN 2 Bandung Angkatan 28.",
+        url: "https://www.instagram.com/xi_rpl_satoe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==&igsi=ZDNlZDc0MzIxNw==",
         color1: "#ffc994",
         color2: "#111111",
       },
       {
-        name: "DISCORD",
-        username: "@rucky",
-        icon: "D",
-        description: "Contact me through Discord.",
-        url: "https://discord.com",
+        name: "RPL - 2",
+        username: "@dwiyasa.rpl",
+        icon: "R2",
+        description: "Akun Ig Resmi dari XI RPL 2 SMKN 2 Bandung Angkatan 28.",
+        url: "https://www.instagram.com/dwiyasa.rpl/?utm_source=ig_web_button_share_sheet",
         color1: "#5865F2",
         color2: "#23272A",
       },
       {
-        name: "GITHUB",
-        username: "@rucky",
-        icon: "G",
-        description: "Explore my projects and repositories.",
-        url: "https://github.com",
+        name: "SMKN 2 BANDUNG",
+        username: "@smkn2bandung",
+        icon: "TWOTECH",
+        description: "Akun Ig Resmi SMKN 2 Bandung.",
+        url: "https://www.instagram.com/smkn2bandung?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==&igsi=ZDNlZDc0MzIxNw==",
         color1: "#d1d5db", 
         color2: "#24292f",
       },
       {
-        name: "YOUTUBE",
-        username: "@rucky",
+        name: "OSIS SMKN 2 BDG",
+        username: "@osissmkn2bdg",
         icon: "Y",
-        description: "Watch my latest videos.",
-        url: "https://youtube.com",
+        description: "Akun Ig Resmi OSIS SMKN 2 Bandung.",
+        url: "https://www.instagram.com/osissmkn2bdg?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==&igsi=ZDNlZDc0MzIxNw==",
         color1: "#FF7873",
         color2: "#0f0f0f",
       },
@@ -254,8 +225,7 @@ import "../styles/global.css";
 
       const targetData = socialList[nextIndex];
 
-      // Di HP maupun di PC animasi ini akan tetap responsif karena menggunakan nilai persen string
-      const startX = direction === 'next' ? '100%' : '-100%';
+   const startX = direction === 'next' ? '100%' : '-100%';
       const endX = direction === 'next' ? '-100%' : '100%';
 
       gsap.set(overlay, { 

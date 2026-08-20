@@ -2,33 +2,29 @@
 import "../styles/global.css";
 ---
 
-<!-- Ubah height jadi h-auto/min-h-screen di mobile, kembali ke ukuran tetap di desktop -->
 <section
   class="relative w-full min-h-screen overflow-hidden flex items-center justify-center bg-black lg:h-screen lg:w-screen"
   id="EducationHistoryPage"
 >
-  <!-- Stage: Tinggi/lebar statis dimatikan di mobile, kembali absolute 1920x1080 di desktop -->
-  <div id="game-stage" class="w-full h-auto relative origin-center shrink-0 lg:h-[1080px] lg:w-[1920px]">
+ <div id="game-stage" class="w-full h-auto relative origin-center shrink-0 lg:h-[1080px] lg:w-[1920px]">
     
     <div class="flex flex-col h-full w-full px-6 py-24 z-10 lg:items-center lg:p-16 lg:static">
-      
-      <!-- HEADER -->
+
       <div class="mb-10 lg:mb-0 lg:absolute lg:top-3 lg:left-120">
         <h2 class="text-3xl text-white">
-          RUCKY: EDUCATION 
+          SMKN 2: RPL & PPLG 
         </h2>
         <h2 class="text-4xl md:text-5xl text-white font-bold lg:font-normal">
-          HISTORY
+          SEJARAH
         </h2>
       </div>
 
-      <!-- KONTEN UTAMA (Teks & Gambar) -->
       <div class="relative w-full flex flex-col lg:absolute lg:top-150 lg:left-300 lg:w-auto lg:block">
         
         <div class="flex flex-col items-start text-white w-full">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap-icon lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
           <p class="m-1 text-sm lg:text-base">
-            RUCKY: EDUCATION-HISTORY 
+            SMKN 2: RPL & PPLG-HISTORY 
           </p>
           
           <h1 id="edu-title" class="text-3xl lg:text-5xl m-1 font-bold lg:font-normal mt-4 lg:mt-1">SDN PATRAKOMALA</h1>
@@ -38,26 +34,22 @@ import "../styles/global.css";
           </p>
         </div>
 
-        <!-- Gambar: Di mobile ada di bawah deskripsi, di desktop kembali ke kanan -->
-        <img id="edu-img" src="/bg3.jpg" alt="" class="w-full h-64 object-cover mt-8 rounded-lg lg:rounded-none lg:mt-0 lg:w-auto lg:absolute lg:right-185 lg:top-0 lg:h-150" />
+     <img id="edu-img" src="/bg3.jpg" alt="" class="w-full h-64 object-cover mt-8 rounded-lg lg:rounded-none lg:mt-0 lg:w-auto lg:absolute lg:right-185 lg:top-0 lg:h-150" />
       </div>
       
-      <!-- NAVIGASI & LIST -->
       <div class="relative w-full mt-12 flex flex-col items-start text-white lg:absolute lg:top-[680px] lg:left-[300px] lg:mt-0 lg:w-auto lg:block">
             
         <p id="edu-counter" class="text-gray-400 mb-4 lg:mb-0 lg:absolute lg:-top-8 lg:left-[120px]">
           2/4
         </p>
         
-        <!-- List: Di mobile jadi flex-row wrap (sejajar horizontal), di desktop vertikal -->
-        <ul class="flex flex-row flex-wrap gap-2 lg:gap-0 lg:flex-col lg:items-start lg:space-y-3 mb-8 lg:mb-0">
+      <ul class="flex flex-row flex-wrap gap-2 lg:gap-0 lg:flex-col lg:items-start lg:space-y-3 mb-8 lg:mb-0">
           <li class="edu-list-item cursor-pointer px-3 py-2 text-sm lg:text-base lg:px-4 font-bold uppercase inline-block border border-gray-800 lg:border-none" data-index="0">TK</li>
           <li class="edu-list-item cursor-pointer px-3 py-2 text-sm lg:text-base lg:px-4 font-bold uppercase inline-block border border-gray-800 lg:border-none" data-index="1">SDN PATRA</li>
           <li class="edu-list-item cursor-pointer px-3 py-2 text-sm lg:text-base lg:px-4 font-bold uppercase inline-block border border-gray-800 lg:border-none" data-index="2">SMPN 7</li>
           <li class="edu-list-item cursor-pointer px-3 py-2 text-sm lg:text-base lg:px-4 font-bold uppercase inline-block border border-gray-800 lg:border-none" data-index="3">SMKN 2</li>
         </ul>
 
-        <!-- Tombol Prev/Next -->
         <div class="flex flex-row gap-4 lg:block">
           <div id="btn-prev" class="bg-black text-white border border-white/20 lg:border-none w-12 h-12 lg:w-10 lg:h-10 relative lg:absolute lg:left-[0px] lg:top-50 flex items-center justify-center cursor-pointer">
             <p class="text-2xl font-bold pointer-events-none">&lt;</p>
@@ -69,7 +61,6 @@ import "../styles/global.css";
         </div>
       </div>
 
-      <!-- DEKORASI (Disembunyikan di Mobile) -->
       <p class="hidden lg:block relative top-200 left-180 mt-6 text-gray-400 max-w-3xl">
         V.1-Entry&#8968;2:10&#8969;
       </p>
@@ -120,7 +111,6 @@ import "../styles/global.css";
 
   let currentIndex = 1;
   let switching = false;
-  // Cek eksistensi elemen agar glitch tidak error jika dipanggil
   const glitchTargets = ['#edu-title', '#edu-desc', '#edu-img', '#edu-counter'].filter(selector => document.querySelector(selector) !== null);
   const ACCENT_COLOR = '#FF7873';
 
@@ -133,7 +123,7 @@ import "../styles/global.css";
     const data = educationData[index];
 
     const isMobile = window.innerWidth < 1024;
-    const moveXActive = isMobile ? 0 : 15; // Jangan geser X di mobile
+    const moveXActive = isMobile ? 0 : 15;
 
     const apply = () => {
       if (titleEl) titleEl.textContent = data.title;
@@ -166,7 +156,6 @@ import "../styles/global.css";
     const stage = document.getElementById('game-stage');
     if (!stage) return;
 
-    // MATIKAN SCALING PAKSA DI MOBILE
     if (window.innerWidth < 1024) {
       stage.style.transform = '';
       return;
@@ -183,7 +172,6 @@ import "../styles/global.css";
     const btnNext = document.getElementById('btn-next');
     const listItems = document.querySelectorAll('.edu-list-item');
 
-    // Helper untuk pergerakan hover
     const getMoveX = (offset) => window.innerWidth < 1024 ? 0 : offset;
 
     if(btnPrev) {
@@ -241,7 +229,6 @@ import "../styles/global.css";
 
   window.addEventListener('resize', () => {
     autoScaleStage();
-    // Reset posisi X elemen aktif saat ukuran layar melintasi breakpoint
     const listItems = document.querySelectorAll('.edu-list-item');
     listItems.forEach(li => {
       if(window.innerWidth < 1024) {

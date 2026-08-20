@@ -2,34 +2,28 @@
 import "../styles/global.css";
 ---
 
-<!-- Ubah letak pembungkus agar nempel di bawah (bottom) saat mode mobile -->
 <nav
   id="side-nav"
   class="fixed inset-x-0 bottom-0 z-50 pointer-events-none lg:left-0 lg:top-0 lg:h-screen lg:w-screen lg:overflow-hidden"
 >
-  <!-- Stage: Tinggi/lebar statis dimatikan di mobile, kembali jadi absolute 1920x1080 di desktop -->
-  <div
+<div
     id="nav-stage"
     class="relative h-auto w-full pointer-events-none lg:absolute lg:left-0 lg:top-0 lg:h-[1080px] lg:w-[1920px] lg:origin-top-left"
   >
-    <!-- Sidebar / Bottom Bar -->
     <div
       id="sidebar"
       class="pointer-events-auto flex w-full flex-row items-center justify-around border-t border-slate-800 bg-black/95 px-2 py-2 backdrop-blur-md lg:absolute lg:left-0 lg:top-0 lg:h-[1080px] lg:w-[80px] lg:flex-col lg:items-start lg:border-r lg:border-t-0 lg:px-0 lg:py-6 lg:overflow-hidden"
     >
 
-      <!-- Logo: Disembunyikan di Mobile agar Tab Bar tetap bersih -->
-      <a
+ <a
         href="#WelcomePage"
         class="hidden lg:flex mb-12 ml-[20px] h-10 w-10 shrink-0 items-center justify-center bg-white font-extrabold text-black"
       >
         R.
       </a>
 
-      <!-- Navigation List -->
       <ul class="flex w-full flex-row items-center justify-between gap-1 lg:flex-col lg:items-start lg:gap-2">
 
-        <!-- ==================== WELCOME ==================== -->
         <li class="nav-item w-auto flex-1 lg:w-full">
           <a
             href="#WelcomePage"
@@ -42,7 +36,6 @@ import "../styles/global.css";
                 <path d="M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z" />
               </svg>
             </div>
-            <!-- Teks Navigasi disembunyikan di Mobile -->
             <span class="nav-label hidden whitespace-nowrap text-sm font-bold uppercase tracking-wider lg:block lg:ml-5">
               Welcome
             </span>
@@ -182,18 +175,14 @@ import "../styles/global.css";
 <script>
   import { gsap } from "../Script/gsap-utils";
 
-  // Skala stage navigasi sesuai viewport khusus untuk desktop
   function autoScaleNavigation() {
     const stage = document.getElementById("nav-stage");
     if (!stage) return;
-
-    // CEK MOBILE: Hentikan pemaksaan resolusi di HP
     if (window.innerWidth < 1024) {
       stage.style.transform = '';
       return; 
     }
 
-    // DESKTOP: Jalankan scaling asli kamu
     const baseWidth = 1920;
     const baseHeight = 1080;
     const scaleX = window.innerWidth / baseWidth;
@@ -203,7 +192,6 @@ import "../styles/global.css";
     stage.style.transform = `scale(${scale})`;
   }
 
-  // Menggunakan gsap.matchMedia agar animasi hover hanya nyala di Desktop!
   function initSidebarExpansion() {
     const sidebar = document.getElementById("sidebar");
     const labels = document.querySelectorAll(".nav-label");
@@ -213,24 +201,20 @@ import "../styles/global.css";
 
     let mm = gsap.matchMedia();
 
-    // Kondisi: Hanya nyala jika layar 1024px ke atas (Tablet besar / Desktop)
     mm.add("(min-width: 1024px)", () => {
-      // 1. Setup awal
+
       gsap.set(labels, { autoAlpha: 0, x: -15 });
 
-      // 2. Buat Timeline
       const sidebarTl = gsap.timeline({ paused: true })
         .to(sidebar, { width: 260, duration: 0.45, ease: "power3.inOut" })
         .to(labels, { autoAlpha: 1, x: 0, duration: 0.3, stagger: 0.03, ease: "power2.out" }, "-=0.25");
 
-      // 3. Handlers
       const onEnter = () => sidebarTl.play();
       const onLeave = () => sidebarTl.reverse();
 
       const onLinkEnter = (e) => gsap.to(e.currentTarget.querySelector('.icon-container'), { scale: 1.15, duration: 0.3, ease: "back.out(2)" });
       const onLinkLeave = (e) => gsap.to(e.currentTarget.querySelector('.icon-container'), { scale: 1, duration: 0.3, ease: "power2.out" });
 
-      // 4. Attach Listeners
       sidebar.addEventListener("mouseenter", onEnter);
       sidebar.addEventListener("mouseleave", onLeave);
 
@@ -239,7 +223,6 @@ import "../styles/global.css";
         link.addEventListener("mouseleave", onLinkLeave);
       });
 
-      // 5. Cleanup otomatis saat di-resize jadi Mobile
       return () => {
         sidebar.removeEventListener("mouseenter", onEnter);
         sidebar.removeEventListener("mouseleave", onLeave);
@@ -248,16 +231,13 @@ import "../styles/global.css";
           link.removeEventListener("mouseleave", onLinkLeave);
         });
         
-        // Kembalikan style CSS ke asalnya
         gsap.set([sidebar, labels], { clearProps: "all" });
       };
     });
   }
 
-  // Inisialisasi
   autoScaleNavigation();
   initSidebarExpansion();
 
-  // Hitung ulang posisi stage setiap kali ukuran viewport berubah
   window.addEventListener("resize", autoScaleNavigation);
 </script>

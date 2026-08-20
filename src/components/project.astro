@@ -126,43 +126,31 @@ const projectGroups: ProjectGroup[] = [
   id="ProjectPage"
   class="relative w-full bg-white font-sans max-lg:pt-0 lg:pt-20"
 >
-  <!-- ========================================= -->
-  <!-- DESKTOP MARQUEE -->
-  <!-- ========================================= -->
   <div class="project-marquee hidden overflow-hidden py-10 lg:block lg:py-14">
     <div class="project-marquee-rail flex whitespace-nowrap will-change-transform">
       {
         Array.from({ length: 8 }).map(() => (
           <h4 class="project-marquee-item mr-10 shrink-0 text-[100px] font-black uppercase tracking-tight">
-            // RUCKY PORTOFOLIO
+            // RPL1&2 PORTOFOLIO
           </h4>
         ))
       }
     </div>
   </div>
 
-  <!-- ========================================= -->
-  <!-- MOBILE HEADER -->
-  <!-- ========================================= -->
   <div class="project-mobile-header border-b border-black pb-4 pl-[80px] pr-4 pt-12 sm:pl-[100px] lg:hidden">
     <p class="font-mono text-[10px] uppercase tracking-widest text-gray-400">
       V.1-Entry &#8968;3/10&#8969;
     </p>
 
     <h2 class="mt-1 text-3xl font-black uppercase leading-none sm:text-4xl">
-      // RUCKY<br />
+      // RPL1&2<br />
       PORTOFOLIO
     </h2>
   </div>
 
-  <!-- ========================================= -->
-  <!-- PROJECT SECTION -->
-  <!-- ========================================= -->
   <div id="project-pin-zone" class="relative">
     
-    <!-- ========================================= -->
-    <!-- PROJECT BANNER -->
-    <!-- ========================================= -->
     <div
       id="project-banner-wrap"
       class="project-banner relative z-40 mx-auto w-full max-w-[1500px] bg-white max-lg:px-0 lg:px-4"
@@ -178,17 +166,11 @@ const projectGroups: ProjectGroup[] = [
       </p>
     </div>
 
-    <!-- ========================================= -->
-    <!-- PROJECT BODY -->
-    <!-- ========================================= -->
     <div
       id="project-body"
       class="relative mx-auto w-full max-w-[1500px] pb-32 pt-6 max-lg:px-0 lg:px-4 lg:pb-56 lg:pt-8"
     >
 
-      <!-- ========================================= -->
-      <!-- DESKTOP PROJECT GRID -->
-      <!-- ========================================= -->
       <div id="project-desktop" class="hidden lg:block">
         {
           projectGroups.map((group, gi) => (
@@ -225,7 +207,6 @@ const projectGroups: ProjectGroup[] = [
 
                 {
                   group.projects.map((project, projectIndex) => {
-                    // ---- SLOT KOSONG (skip grid) ----
                     if (!project) {
                       return <div class="project-empty-slot h-[130px]" aria-hidden="true" />;
                     }
@@ -291,13 +272,9 @@ const projectGroups: ProjectGroup[] = [
         }
       </div>
 
-      <!-- ========================================= -->
-      <!-- MOBILE PROJECT LIST -->
-      <!-- ========================================= -->
       <div id="project-mobile" class="space-y-6 pl-[80px] pr-4 sm:pl-[100px] lg:hidden">
         {
           projectGroups.map((group) => {
-            // Slot null di-skip total di mobile, tidak ada kartu kosong
             const visibleProjects = group.projects.filter(
               (p): p is Project => p !== null
             );
@@ -373,9 +350,6 @@ const projectGroups: ProjectGroup[] = [
     </div>
   </div>
 
-  <!-- ========================================= -->
-  <!-- HOVER PREVIEW DESKTOP -->
-  <!-- ========================================= -->
   <div
     id="project-preview"
     class="pointer-events-none fixed z-[60] hidden w-[340px] flex-col overflow-hidden rounded-lg border border-white/20 bg-black/80 opacity-0 shadow-[0_10px_40px_rgba(0,0,0,0.8)] backdrop-blur-md transition-opacity duration-200 lg:flex"
@@ -398,10 +372,6 @@ const projectGroups: ProjectGroup[] = [
       </span>
     </div>
   </div>
-
-  <!-- ========================================= -->
-  <!-- FULL PROJECT MODAL -->
-  <!-- ========================================= -->
   <div
     id="project-modal"
     class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/95 p-4 opacity-0 backdrop-blur-md transition-opacity duration-300 lg:p-10"
@@ -416,7 +386,6 @@ const projectGroups: ProjectGroup[] = [
 
     <div class="relative flex max-h-[95vh] w-full max-w-6xl flex-col overflow-hidden rounded-xl border border-white/20 bg-zinc-900 shadow-2xl lg:max-h-[90vh] lg:flex-row">
       
-      <!-- Video -->
       <div class="aspect-video w-full shrink-0 bg-black lg:h-[600px] lg:aspect-auto lg:w-2/3">
         <iframe
           id="project-modal-iframe"
@@ -428,7 +397,6 @@ const projectGroups: ProjectGroup[] = [
         ></iframe>
       </div>
 
-      <!-- Details -->
       <div class="flex w-full flex-col justify-center overflow-y-auto p-5 sm:p-8 lg:w-1/3 lg:p-10">
         <div class="mb-2 inline-block self-start bg-[#FF7873] px-3 py-1 font-mono text-xs font-bold uppercase tracking-widest text-black">
           Project Detail
@@ -449,7 +417,7 @@ const projectGroups: ProjectGroup[] = [
         </p>
 
         <div id="project-modal-tags" class="mt-6 flex flex-wrap gap-2 lg:mt-8">
-          <!-- Tags injected by JS -->
+
         </div>
 
         <div class="mt-auto flex flex-col gap-3 pt-6 lg:pt-10">
@@ -478,7 +446,6 @@ const projectGroups: ProjectGroup[] = [
   </div>
 </section>
 
-<!-- SCRIPT JS DAN CSS TETAP SAMA PERSIS. Jangan diubah! -->
 <script>
   import { gsap, ScrollTrigger, Observer, horizontalLoop } from "../Script/gsap-utils";
   

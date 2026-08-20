@@ -10,7 +10,6 @@ import "../styles/global.css";
     id="welcome-viewport"
     class="absolute inset-0 overflow-hidden"
   >
-    <!-- Stage: Flexbox natural di Mobile, Absolute fixed di Desktop -->
     <div
       id="welcome-stage"
       class="relative flex h-full w-full flex-col items-center justify-center lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[1080px] lg:w-[1920px] lg:origin-center lg:z-10"
@@ -60,14 +59,12 @@ style="mask-image: linear-gradient(
         </svg>
       </div>
 
-      <!-- Version Text -->
       <div class="absolute right-4 top-4 z-10 lg:right-[80px] lg:top-[40px]">
         <p class="text-xs text-gray-400 lg:text-lg">
           V.1-Entry &#8968;0:10&#8969;
         </p>
       </div>
-
-      <!-- Image (Diperkecil dan ditengahkan di Mobile) -->
+>
       <img
         src="/CloseUpRucky.JPG"
         alt="Rucky"
@@ -82,7 +79,6 @@ style="mask-image: linear-gradient(
         "
       />
 
-      <!-- Text Container (Diubah ukurannya di Mobile) -->
       <div
         class="
           z-10
@@ -126,7 +122,6 @@ style="mask-image: linear-gradient(
     const svgBg = document.getElementById("svg-bg");
     if (!stage) return;
 
-    // --- CEK MOBILE: Jika lebar layar < 1024px, matikan scaling kaku ---
     if (window.innerWidth < 1024) {
       stage.style.left = '';
       stage.style.top = '';
@@ -138,10 +133,9 @@ style="mask-image: linear-gradient(
         svgBg.style.left = '0';
         svgBg.style.top = '0';
       }
-      return; // Berhenti di sini, biarkan Tailwind CSS mengambil alih
+      return;
     }
 
-    // --- DESKTOP: Logika original tetap berjalan ---
     const sidebarWidth = 80;
     const availableWidth = Math.max(window.innerWidth - sidebarWidth, 320);
     const availableHeight = Math.max(window.innerHeight, 320);
@@ -180,7 +174,7 @@ style="mask-image: linear-gradient(
     if (!line1 || !line2 || !desc) return;
 
     line1.textContent = "RPL 1 & 2";
-    line2.textContent = "Portofolio Website";
+    line2.textContent = "Website portfolio exhibition";
     desc.textContent = "";
 
     gsap.set([line1, line2, desc], { visibility: "visible" });
