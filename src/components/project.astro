@@ -1,5 +1,5 @@
 ---
-import { ArrowBigRightDash, X, ExternalLink, Github } from "lucide-astro";
+import { ArrowBigRightDash, X, ExternalLink, Github, Laptop } from "lucide-astro";
 import "../styles/global.css";
 
 type Project = {
@@ -10,6 +10,7 @@ type Project = {
   deploy: string;
   source: string;
   ytId: string;
+  laptop?: string; // Opsional: Contoh "Laptop 01", "02", atau "Stand A"
 };
 
 type ProjectSlot = Project | null;
@@ -400,9 +401,7 @@ const projectGroups: ProjectGroup[] = [
   id="ProjectPage"
   class="relative w-full bg-white font-sans max-lg:pt-0 lg:pt-20"
 >
-  <!-- ========================================= -->
-  <!-- DESKTOP MARQUEE -->
-  <!-- ========================================= -->
+  <!-- MARQUEE DESKTOP -->
   <div class="project-marquee hidden overflow-hidden py-10 lg:block lg:py-14">
     <div class="project-marquee-rail flex whitespace-nowrap will-change-transform">
       {
@@ -415,9 +414,7 @@ const projectGroups: ProjectGroup[] = [
     </div>
   </div>
 
-  <!-- ========================================= -->
   <!-- MOBILE HEADER -->
-  <!-- ========================================= -->
   <div class="project-mobile-header border-b border-black pb-4 pl-[80px] pr-4 pt-12 sm:pl-[100px] lg:hidden">
     <p class="font-mono text-[10px] uppercase tracking-widest text-gray-400">
       V.1-Entry &#8968;3/10&#8969;
@@ -429,45 +426,34 @@ const projectGroups: ProjectGroup[] = [
     </h2>
   </div>
 
-  <!-- ========================================= -->
   <!-- PROJECT SECTION -->
-  <!-- ========================================= -->
-  <div id="project-pin-zone" class="relative">
-    
-    <!-- ========================================= -->
-    <!-- PROJECT BANNER -->
-    <!-- ========================================= -->
-    <div
-      id="project-banner-wrap"
-      class="project-banner relative z-40 mx-auto w-full max-w-[1500px] bg-white max-lg:px-0 lg:px-4"
-    >
-      <img
-        id="project-banner-img"
-        src="/bannerexample.jpg"
-        alt="Project Banner"
-        class="h-[80px] w-full object-cover grayscale opacity-80 sm:h-[120px] lg:h-[180px]"
-      />
-      <p class="absolute -top-5 right-4 hidden font-mono text-xs tracking-widest text-gray-400 lg:block lg:right-0 lg:text-sm">
-        V.1-Entry&#8968;4:10&#8969;
-      </p>
-    </div>
+<div id="project-pin-zone" class="relative">
+  <!-- BANNER -->
+  <div
+    id="project-banner-wrap"
+    class="project-banner relative z-40 mx-auto w-full max-w-[1500px] bg-white max-lg:px-0 lg:px-4"
+  >
+    <img
+      id="project-banner-img"
+      src="/Banner_RPL.png"
+      alt="Project Banner"
+      class="h-auto w-full"
+    />
+    <p class="absolute -top-5 right-4 hidden font-mono text-xs tracking-widest text-gray-400 lg:right-0 lg:block lg:text-sm">
+      V.1-Entry&#8968;4:10&#8969;
+    </p>
+  </div>
 
-    <!-- ========================================= -->
-    <!-- PROJECT BODY -->
-    <!-- ========================================= -->
+    <!-- BODY -->
     <div
       id="project-body"
       class="relative mx-auto w-full max-w-[1500px] pb-32 pt-6 max-lg:px-0 lg:px-4 lg:pb-56 lg:pt-8"
     >
-
-      <!-- ========================================= -->
-      <!-- DESKTOP PROJECT GRID -->
-      <!-- ========================================= -->
+      <!-- DESKTOP GRID -->
       <div id="project-desktop" class="hidden lg:block">
         {
           projectGroups.map((group, gi) => (
             <div class="project-group mb-10" data-group={gi}>
-              <!-- Group Header -->
               {gi === 0 && (
                 <div class="mb-4 grid grid-cols-[80px_1fr_1fr] gap-4">
                   <div />
@@ -487,19 +473,17 @@ const projectGroups: ProjectGroup[] = [
               )}
 
               <div class="grid grid-cols-[80px_1fr_1fr] gap-4">
-                <!-- Date -->
                 <div
                   class="flex items-start justify-center bg-black pt-3 text-white"
                   style={`grid-row: span ${Math.ceil(group.projects.length / 2)}`}
                 >
-                  <span class="mt-6 -rotate-90 whitespace-nowrap font-mono text-base font-bold tracking-widest">
+                  <span class="-rotate-90 whitespace-nowrap mt-6 font-mono text-base font-bold tracking-widest">
                     {group.date}
                   </span>
                 </div>
 
                 {
                   group.projects.map((project, projectIndex) => {
-                    // ---- SLOT KOSONG (skip grid) ----
                     if (!project) {
                       return <div class="project-empty-slot h-[130px]" aria-hidden="true" />;
                     }
@@ -512,6 +496,7 @@ const projectGroups: ProjectGroup[] = [
                         class="project-card group relative flex h-[130px] cursor-pointer flex-col justify-between overflow-hidden border border-gray-300 bg-gray-100 p-0 transition-colors duration-300 hover:border-black"
                         data-yt={project.ytId}
                         data-deploy={project.deploy}
+                        data-laptop={project.laptop || ""}
                         data-source={project.source}
                         data-title={project.title}
                         data-desc={project.desc}
@@ -528,7 +513,7 @@ const projectGroups: ProjectGroup[] = [
                                 {project.title}
                               </h3>
                             </div>
-                            <div class="max-w-[100%] -translate-x-3 text-xs text-gray-500 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-gray-200 group-hover:opacity-100">
+                            <div class="-translate-x-3 max-w-[100%] text-xs text-gray-500 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-gray-200 group-hover:opacity-100">
                               {project.desc}
                             </div>
                             <div class="mt-auto flex flex-wrap gap-2">
@@ -543,7 +528,7 @@ const projectGroups: ProjectGroup[] = [
                           <div class="relative z-0 w-[35%] overflow-hidden border-l border-gray-300 bg-black transition-colors group-hover:border-black">
                             <iframe
                               src={`https://www.youtube.com/embed/${project.ytId}?autoplay=1&mute=1&controls=0&showinfo=0&modestbranding=1&rel=0&loop=1&playlist=${project.ytId}&playsinline=1`}
-                              class="pointer-events-none absolute left-1/2 top-1/2 h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2 grayscale transition-all duration-500 group-hover:scale-[1.1] group-hover:grayscale-0 group-hover:opacity-100"
+                              class="pointer-events-none absolute left-1/2 top-1/2 h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2 grayscale transition-all duration-500 group-hover:scale-[1.1] group-hover:opacity-100 group-hover:grayscale-0"
                               allow="autoplay; encrypted-media"
                               loading="lazy"
                               tabindex="-1"
@@ -565,13 +550,10 @@ const projectGroups: ProjectGroup[] = [
         }
       </div>
 
-      <!-- ========================================= -->
-      <!-- MOBILE PROJECT LIST -->
-      <!-- ========================================= -->
+      <!-- MOBILE LIST -->
       <div id="project-mobile" class="space-y-6 pl-[80px] pr-4 sm:pl-[100px] lg:hidden">
         {
           projectGroups.map((group) => {
-            // Slot null di-skip total di mobile, tidak ada kartu kosong
             const visibleProjects = group.projects.filter(
               (p): p is Project => p !== null
             );
@@ -593,6 +575,7 @@ const projectGroups: ProjectGroup[] = [
                           class="project-card group relative cursor-pointer overflow-hidden rounded-md border border-gray-300 bg-gray-100 transition-colors active:bg-black active:text-white"
                           data-yt={project.ytId}
                           data-deploy={project.deploy}
+                          data-laptop={project.laptop || ""}
                           data-source={project.source}
                           data-title={project.title}
                           data-desc={project.desc}
@@ -647,9 +630,7 @@ const projectGroups: ProjectGroup[] = [
     </div>
   </div>
 
-  <!-- ========================================= -->
   <!-- HOVER PREVIEW DESKTOP -->
-  <!-- ========================================= -->
   <div
     id="project-preview"
     class="pointer-events-none fixed z-[60] hidden w-[340px] flex-col overflow-hidden rounded-lg border border-white/20 bg-black/80 opacity-0 shadow-[0_10px_40px_rgba(0,0,0,0.8)] backdrop-blur-md transition-opacity duration-200 lg:flex"
@@ -673,9 +654,7 @@ const projectGroups: ProjectGroup[] = [
     </div>
   </div>
 
-  <!-- ========================================= -->
   <!-- FULL PROJECT MODAL -->
-  <!-- ========================================= -->
   <div
     id="project-modal"
     class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/95 p-4 opacity-0 backdrop-blur-md transition-opacity duration-300 lg:p-10"
@@ -689,7 +668,6 @@ const projectGroups: ProjectGroup[] = [
     </button>
 
     <div class="relative flex max-h-[95vh] w-full max-w-6xl flex-col overflow-hidden rounded-xl border border-white/20 bg-zinc-900 shadow-2xl lg:max-h-[90vh] lg:flex-row">
-      
       <!-- Video -->
       <div class="aspect-video w-full shrink-0 bg-black lg:h-[600px] lg:aspect-auto lg:w-2/3">
         <iframe
@@ -727,6 +705,7 @@ const projectGroups: ProjectGroup[] = [
         </div>
 
         <div class="mt-auto flex flex-col gap-3 pt-6 lg:pt-10">
+          <!-- TOMBOL LIVE PREVIEW (JIKA ADA DEPLOY) -->
           <a
             id="project-modal-deploy"
             href="#"
@@ -737,6 +716,16 @@ const projectGroups: ProjectGroup[] = [
             Live Preview
           </a>
 
+          <!-- CATATAN IRL (JIKA TIDAK ADA DEPLOY / ONLINE LINK) -->
+          <div
+            id="project-modal-no-deploy"
+            class="hidden w-full items-center justify-center gap-2.5 rounded-sm border border-amber-500/40 bg-amber-500/10 px-4 py-3 font-mono text-xs uppercase tracking-wider text-amber-300 lg:py-3.5"
+          >
+            <Laptop size={18} class="shrink-0 text-amber-400" />
+            <span>Preview IRL: <strong class="text-white underline decoration-amber-400" id="project-modal-laptop-num">Laptop #01</strong></span>
+          </div>
+
+          <!-- TOMBOL SOURCE CODE -->
           <a
             id="project-modal-source"
             href="#"
@@ -752,7 +741,6 @@ const projectGroups: ProjectGroup[] = [
   </div>
 </section>
 
-<!-- SCRIPT JS DAN CSS TETAP SAMA PERSIS. Jangan diubah! -->
 <script>
   import { gsap, ScrollTrigger, Observer, horizontalLoop } from "../Script/gsap-utils";
   
@@ -770,6 +758,8 @@ const projectGroups: ProjectGroup[] = [
     const modalDesc = document.getElementById("project-modal-desc");
     const modalTags = document.getElementById("project-modal-tags");
     const modalDeploy = document.getElementById("project-modal-deploy") as HTMLAnchorElement;
+    const modalNoDeploy = document.getElementById("project-modal-no-deploy");
+    const modalLaptopNum = document.getElementById("project-modal-laptop-num");
     const modalSource = document.getElementById("project-modal-source") as HTMLAnchorElement;
 
     if (!page || !body) return;
@@ -846,12 +836,39 @@ const projectGroups: ProjectGroup[] = [
         const title = card.getAttribute("data-title");
         const desc = card.getAttribute("data-desc");
         const deploy = card.getAttribute("data-deploy");
+        const laptop = card.getAttribute("data-laptop");
         const source = card.getAttribute("data-source");
         const tags = card.getAttribute("data-tags")?.split(",") || [];
 
         if (modalTitle) modalTitle.textContent = title;
         if (modalDesc) modalDesc.textContent = desc;
-        if (modalDeploy) modalDeploy.href = deploy || "#";
+
+        // CEK KETERSEDIAAN DEPLOY / LIVE PREVIEW
+        if (deploy && deploy.trim() !== "") {
+          if (modalDeploy) {
+            modalDeploy.href = deploy;
+            modalDeploy.classList.remove("hidden");
+            modalDeploy.classList.add("flex");
+          }
+          if (modalNoDeploy) {
+            modalNoDeploy.classList.add("hidden");
+            modalNoDeploy.classList.remove("flex");
+          }
+        } else {
+          // JIKA DEPLOY KOSONG, TAMPILKAN CATATAN LAPTOP
+          if (modalDeploy) {
+            modalDeploy.classList.add("hidden");
+            modalDeploy.classList.remove("flex");
+          }
+          if (modalNoDeploy) {
+            modalNoDeploy.classList.remove("hidden");
+            modalNoDeploy.classList.add("flex");
+            if (modalLaptopNum) {
+              modalLaptopNum.textContent = laptop && laptop.trim() !== "" ? laptop : "Stand Pameran / Stand Utama";
+            }
+          }
+        }
+
         if (modalSource) modalSource.href = source || "#";
         if (modalTags) {
           modalTags.innerHTML = tags.map((tag) => `<span class="rounded-full border border-gray-500 text-gray-300 px-3 py-1 font-mono text-[10px] uppercase">${tag.trim()}</span>`).join("");
