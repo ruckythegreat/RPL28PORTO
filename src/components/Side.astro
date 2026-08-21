@@ -4,26 +4,27 @@ import "../styles/global.css";
 
 <nav
   id="side-nav"
-  class="fixed inset-x-0 bottom-0 z-50 pointer-events-none lg:left-0 lg:top-0 lg:h-screen lg:w-screen lg:overflow-hidden"
+  class="fixed inset-x-0 bottom-0 z-50 pointer-events-none lg:left-0 lg:top-0 lg:h-screen lg:w-auto"
 >
-<div
+  <!-- Menghapus class fixed 1920x1080, gunakan h-full -->
+  <div
     id="nav-stage"
-    class="relative h-auto w-full pointer-events-none lg:absolute lg:left-0 lg:top-0 lg:h-[1080px] lg:w-[1920px] lg:origin-top-left"
+    class="relative h-full w-full pointer-events-none"
   >
     <div
       id="sidebar"
-      class="pointer-events-auto flex w-full flex-row items-center justify-around border-t border-slate-800 bg-black/95 px-2 py-2 backdrop-blur-md lg:absolute lg:left-0 lg:top-0 lg:h-[1080px] lg:w-[80px] lg:flex-col lg:items-start lg:border-r lg:border-t-0 lg:px-0 lg:py-6 lg:overflow-hidden"
+      class="pointer-events-auto flex w-full flex-row items-center justify-around border-t border-slate-800 bg-black/95 px-2 py-2 backdrop-blur-md lg:absolute lg:left-0 lg:top-0 lg:h-full lg:w-[80px] lg:flex-col lg:items-start lg:border-r lg:border-t-0 lg:px-0 lg:py-6 lg:overflow-y-auto lg:overflow-x-hidden custom-scrollbar"
     >
-
- <a
+      <a
         href="#WelcomePage"
         class="hidden lg:flex mb-12 ml-[20px] h-10 w-10 shrink-0 items-center justify-center bg-white font-extrabold text-black"
       >
-        R.
+        <img src="/LOGO_RPL.png" alt="Logo">
       </a>
 
       <ul class="flex w-full flex-row items-center justify-between gap-1 lg:flex-col lg:items-start lg:gap-2">
 
+        <!-- ==================== WELCOME ==================== -->
         <li class="nav-item w-auto flex-1 lg:w-full">
           <a
             href="#WelcomePage"
@@ -58,28 +59,7 @@ import "../styles/global.css";
               </svg>
             </div>
             <span class="nav-label hidden whitespace-nowrap text-sm font-bold uppercase tracking-wider lg:block lg:ml-5">
-              Biodata
-            </span>
-          </a>
-        </li>
-
-        <!-- ==================== EDUCATION ==================== -->
-        <li class="nav-item w-auto flex-1 lg:w-full">
-          <a
-            href="#EducationHistoryPage"
-            class="nav-link flex flex-col items-center justify-center py-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-white lg:flex-row lg:py-4 lg:pl-[28px] lg:justify-start lg:w-full"
-            title="Education"
-          >
-            <div class="icon-container flex h-6 w-6 shrink-0 items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect width="18" height="18" x="3" y="3" rx="2" />
-                <path d="M7 7v10" />
-                <path d="M11 7v10" />
-                <path d="m15 7 2 10" />
-              </svg>
-            </div>
-            <span class="nav-label hidden whitespace-nowrap text-sm font-bold uppercase tracking-wider lg:block lg:ml-5">
-              Education
+              Tentang
             </span>
           </a>
         </li>
@@ -145,28 +125,6 @@ import "../styles/global.css";
           </a>
         </li>
 
-        <!-- ==================== CONTACT ==================== -->
-        <li class="nav-item w-auto flex-1 lg:w-full">
-          <a
-            href="#ContactPage"
-            class="nav-link flex flex-col items-center justify-center py-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-white lg:flex-row lg:py-4 lg:pl-[28px] lg:justify-start lg:w-full"
-            title="Contact"
-          >
-            <div class="icon-container flex h-6 w-6 shrink-0 items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M16 2v2" />
-                <path d="M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" />
-                <path d="M8 2v2" />
-                <circle cx="12" cy="10" r="3" />
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-              </svg>
-            </div>
-            <span class="nav-label hidden whitespace-nowrap text-sm font-bold uppercase tracking-wider lg:block lg:ml-5">
-              Contact
-            </span>
-          </a>
-        </li>
-
       </ul>
     </div>
   </div>
@@ -174,23 +132,6 @@ import "../styles/global.css";
 
 <script>
   import { gsap } from "../Script/gsap-utils";
-
-  function autoScaleNavigation() {
-    const stage = document.getElementById("nav-stage");
-    if (!stage) return;
-    if (window.innerWidth < 1024) {
-      stage.style.transform = '';
-      return; 
-    }
-
-    const baseWidth = 1920;
-    const baseHeight = 1080;
-    const scaleX = window.innerWidth / baseWidth;
-    const scaleY = window.innerHeight / baseHeight;
-    const scale = Math.min(scaleX, scaleY);
-    
-    stage.style.transform = `scale(${scale})`;
-  }
 
   function initSidebarExpansion() {
     const sidebar = document.getElementById("sidebar");
@@ -202,7 +143,6 @@ import "../styles/global.css";
     let mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
-
       gsap.set(labels, { autoAlpha: 0, x: -15 });
 
       const sidebarTl = gsap.timeline({ paused: true })
@@ -236,8 +176,17 @@ import "../styles/global.css";
     });
   }
 
-  autoScaleNavigation();
+  // Fungsi autoScaleNavigation() dihapus karena sidebar lebih baik dikendalikan murni oleh CSS Flex & h-screen.
   initSidebarExpansion();
-
-  window.addEventListener("resize", autoScaleNavigation);
 </script>
+
+<style>
+  /* Opsional: Mempercantik scrollbar jika layar terlalu pendek */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #334155; 
+    border-radius: 4px;
+  }
+</style>
