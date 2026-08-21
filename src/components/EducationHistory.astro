@@ -65,13 +65,13 @@ import "../styles/global.css";
         V.1-Entry&#8968;2:10&#8969;
       </p>
 
-      <div class="hidden lg:flex top-15 absolute h-[120px] w-[19000px] z-[-3] bg-[rgb(255,201,148)] text-4xl -translate-y-1/2">
+      <div class="hidden lg:flex top-15 absolute h-[120px] w-[19000px] z-[-3] bg-[#20414E] text-4xl -translate-y-1/2">
       </div>
 
       <div class="hidden lg:flex absolute top-330 right-32 items-center">
-        <div class="w-26 h-1 bg-[#E22F80]"></div>
-        <div class="w-22 h-1 bg-[#FF7873]"></div>
-        <div class="w-18 h-1 bg-[#ffc994]"></div>
+        <div class="w-26 h-1 bg-[#102A33]"></div>
+        <div class="w-22 h-1 bg-[#4F7C89]"></div>
+        <div class="w-18 h-1 bg-[#20414E]"></div>
       </div>
 
     </div>
@@ -112,7 +112,7 @@ import "../styles/global.css";
   let currentIndex = 1;
   let switching = false;
   const glitchTargets = ['#edu-title', '#edu-desc', '#edu-img', '#edu-counter'].filter(selector => document.querySelector(selector) !== null);
-  const ACCENT_COLOR = '#FF7873';
+  const ACCENT_COLOR = '#4F7C89';
 
   function updateEducationUI(index, animate = true) {
     const titleEl = document.getElementById('edu-title');
